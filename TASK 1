@@ -1,0 +1,2 @@
+m = "Merry Christmas"
+print(m[1:])
