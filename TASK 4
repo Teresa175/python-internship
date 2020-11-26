@@ -1,0 +1,19 @@
+#1
+X =[13,42,35,44,95,86,77,28,69]
+X.append(23)   #Add an item in to the list (using function)
+print(X)
+X.remove(13)   #Delete (using function)
+print(X)
+X.sort()
+print("Largest element is ",X[-1])    #The largest number from the list
+print("Smallest element is",X[0])     #The Smallest number from the list 
+
+#2 reverse the created tuple
+t = ('a', 28, "bcd")
+z = reversed(t)
+print(tuple(z))
+
+# 3 convert tuple to list
+Tup1 = ('a', 28, "bcd")
+List1 = list(Tup1)
+print(List1)
