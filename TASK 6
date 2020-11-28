@@ -39,26 +39,26 @@ def armstrong(nubmer):
             print("The number you have given is not an Armstrong number")
 armstrong(7)
 
-#4 Write a program to print the multiplication table of 9
+#5 Write a program to print the multiplication table of 9
 table=int(input("enter the number up to which table is to be calculated"))
 print("Multiplication table for 9 is:")
 for n in range(0,table):
     mul=n*9
     print("9*",n,"=",mul)
 
-#5 Check if a integer is negative or positive
+#6  Check if a integer is negative or positive
 n=int(input("enter the number to find whether it is positive or negative:"))
 if(n>0):
     print("The number you have entered is positive")
 else:
     print("The number yoy have entered is negative")
 
-#6 Write a program to convert the number of days to ages
+#7 Write a program to convert the number of days to ages
 days=int(input("enter the number of days you have lived: "))
 age=float(days/365)
 print("You age is: ",age)
 
-#7 Trigonometry problem using math function write a program to solve using math function
+#8 Trigonometry problem using math function write a program to solve using math function
 import math
 n=60
 print("The sin value is: ",end="")
@@ -68,7 +68,7 @@ print(math.cos(n))
 print("The tan value is: ",end="")
 print(math.tan(n))
 
-#8 Create a calculator only on a code level by using if condition
+#9 Create a calculator only on a code level by using if condition
 a=int(input("Enter the first integer:"))
 b=int(input("Enter the second integer:"))
 print("Choose the arithmetic function you want to do")
