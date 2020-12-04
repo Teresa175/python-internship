@@ -1,0 +1,12 @@
+#Task-12  
+#1
+import json
+print(json.dumps({"Name":"Hari","Age":25})) #dict
+print(json.dumps(["Shan","Nivar"]))         #list
+print(json.dumps(("Charlie","Delta")))       #tuple
+print(json.dumps("Welcome"))                 #str
+print(json.dumps(23))                        #int
+print(json.dumps(99.09))                     #float
+print(json.dumps(True))                      #True
+print(json.dumps(False))                     #False
+print(json.dumps(None))                      #None
