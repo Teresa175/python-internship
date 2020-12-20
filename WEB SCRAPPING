@@ -1,0 +1,128 @@
+# TERESA's Project(Web Scrapping)
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+from pathlib import Path
+site1 = "https://www.flipkart.com/apple-iphone-11-pro-max-silver-64-gb/p/itm9cd54210a8047?pid=MOBFKCTSTETGYFKZ&lid=LSTMOBFKCTSTETGYFKZZHWDT6&marketplace=FLIPKART&srno=s_1_15&otracker=AS_QueryStore_OrganicAutoSuggest_2_9_na_na_ps&otracker1=AS_QueryStore_OrganicAutoSuggest_2_9_na_na_ps&fm=SEARCH&iid=02761160-7a56-44bd-9a7a-1148acfcc971.MOBFKCTSTETGYFKZ.SEARCH&ppt=sp&ppn=sp&ssid=48ywccdxm80000001607849038787&qH=2af92350bd5b683b"
+site2 = "https://www.poorvikamobile.com/apple-iphone-11-pro-max-silver-64gb"
+site3 = "https://www.reliancedigital.in/apple-iphone-11-pro-max-64-gb-silver-includes-earpods-and-adapter-/p/491584685?gclid=CjwKCAiAlNf-BRB_EiwA2osbxelDfzNlYvWcpNcBbXRq6AmAyg5NghL8HwDpJ8smKIcQg0iF22wyOhoCvPYQAvD_BwE"
+site4 = "https://gadgets360.com/shop/apple-iphone-11-pro-max-64-gb-silver-31373237342d3231333335"
+site5 = "https://www.shopclues.com/apple-iphone-11-pro-max-64gb-4gb-ram-smartphone-new-gold-147953172.html"
+
+wait_imp = 10
+CO = webdriver.ChromeOptions()
+CO.add_experimental_option('useAutomationExtension', False)
+CO.add_argument('--ignore-certificate-errors')
+CO.add_argument('--start-maximized')
+wd = webdriver.Chrome(r"C:\Users\DELL\Downloads\chromedriver.exe",options=CO)
+print ("********************************************************************\n")
+print("                  Opening Chrome, Please wait ..... \n")
+
+#Flipkart
+print ("Reaching Flipkart")
+wd.get(site1)
+wd.implicitly_wait(wait_imp)
+f_price = wd.find_element_by_xpath("/html/body/div[1]/div/div[3]/div[1]/div[2]/div[2]/div/div[3]/div[1]/div")
+F = f_price.text
+pr_name = wd.find_element_by_xpath("/html/body/div[1]/div/div[3]/div[1]/div[2]/div[2]/div/div[1]/h1/span")
+product = pr_name.text
+print (" ---> Successfully retrieved the price from Flipkart \n")
+time.sleep(2)
+
+#Poorvika
+print("Reaching Poorvika")
+wd.get(site2)
+wd.implicitly_wait(wait_imp)
+p_price = wd.find_element_by_xpath("/html/body/div[1]/div[7]/div[1]/div/div[2]/div[2]/div[6]/div/span[1]/span[1]")
+P = p_price.text
+print (" ---> Successfully retrieved the price from Poorvika \n")
+time.sleep(2)
+
+
+#Reliance Digital
+print("Reaching Reliance Digital")
+wd.get(site3)
+wd.implicitly_wait(wait_imp)
+r_price = wd.find_element_by_xpath("/html/body/div[2]/main/main/div[2]/section[1]/div[2]/div[5]/div[2]/div[1]/ul/li/span")
+R = r_price.text
+print (" ---> Successfully retrieved the price from Reliance Digital \n")
+time.sleep(2)
+
+#Gadgets 360
+print("Reaching Gadgets 360")
+wd.get(site4)
+wd.implicitly_wait(wait_imp)
+g_price = wd.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/div/span[2]")
+G = g_price.text
+print (" ---> Successfully retrieved the price from Gadgets 360\n")
+time.sleep(2)
+
+#ShopClues
+print("Reaching ShopClues")
+wd.get(site5)
+wd.implicitly_wait(wait_imp)
+s_price = wd.find_element_by_xpath("/html/body/div[5]/div[1]/div[1]/div[2]/div[3]/div[2]/span[1]")
+S = s_price.text
+print (" ---> Successfully retrieved the price from ShopClues\n")
+time.sleep(2)
+
+
+# Final display
+print ("#---------------PRODUCT NAME BEING COMPARED-------------#\n")
+print("Product Name: "+product)
+
+print ("\n#-------------------------PRICE---------------------------------#\n")
+print("Price available at Flipkart is: "+F)
+print("Price available at Poorvika is:"+P)
+print("Price available at Reliance Digital is:"+R)
+print("Price available at Gadgets 360 is:"+G)
+print("Price available at ShopClues is:"+S)
+
+
+#CHEAPEST RATE
+list1=[F,R,S,P,G]
+print ("\n#-------------------------CHEAPEST OF ALL----------------------#\n")
+print("The Lowest price is :",min(list1))
+            
+if(F<P and F<R and F<S and F<G):
+     print("Flipkart is the Cheapest:" , F)
+elif(P<F and P<R and P<G and P<S):
+     print("Poorvika Mobiles is the Cheapest:",P)
+elif(R<F and R<P and R<G and R<S):
+     print("Reliance Digital is the Cheapest:",R)
+elif(G<F and G<P and G<R and G<S):
+     print("Gadgets 360 is the Cheapest:",G)
+elif(S<F and S<P and S<R and S<G):
+     print("ShopClues is the Cheapest:",S)    
+else:
+    print("NO OUTPUT")
+
+#COSTLIEST ONE
+list1=[F,R,S,P,G]
+print ("\n#-------------------------COSTLIEST OF ALL----------------------#\n")
+print("The maximum price is :",max(list1))    
+
+if(F>P and F>R and F>S and F>G):
+     print("Flipkart is the Costliest:" , F)
+elif(P>F and P>R and P>G and P>S):
+     print("Poorvika Mobiles is the Costliest:",P)
+elif(R>F and R>P and R>G and R>S):
+     print("Reliance Digital is the Costliest:",R)
+elif(G>F and G>P and G>R and G>S):
+     print("Gadgets 360 is the Costliest:",G)
+elif(S>F and S>P and S>R and S>G):
+     print("ShopClues is the Costliest:",S)    
+else:
+    print("NO OUTPUT")
+
+
+
+list1.sort()
+print("PRICE LIST FROM MINIMUM TO MAXIMUM:",list1)
+
+print("..........................END ............................ \n")
+
+
+
+print("********************************************************************\n")
+ 
